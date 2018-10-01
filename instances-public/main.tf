@@ -1,4 +1,3 @@
-
 # public instances
 resource "aws_instance" "public_instances" {
   ami               = "${var.pub_ami_id}"
@@ -8,7 +7,7 @@ resource "aws_instance" "public_instances" {
   subnet_id         = "${var.pub_sn_id}"
 
   associate_public_ip_address = true
-  source_dest_check = false
+  source_dest_check           = false
 
   # NOTE: due to an existing issue in terraform: https://github.com/hashicorp/terraform/issues/953,
   # modules cannot be provided with a "count" attribute. Hence this needs to be handled
@@ -16,7 +15,8 @@ resource "aws_instance" "public_instances" {
   count = 1
 
   vpc_security_group_ids = [
-    "${var.pub_sg_id}"]
+    "${var.pub_sg_id}",
+  ]
 
   tags = {
     Name = "${var.pub_sn}_${count.index}"

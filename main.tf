@@ -13,9 +13,9 @@ data "terraform_remote_state" "network" {
 # Provider
 ###############################################################################
 provider "aws" {
-  access_key  = "${var.aws_access_key_id}"
-  secret_key  = "${var.aws_secret_access_key}"
-  region      = "${data.terraform_remote_state.network.vpc_region}"
+  access_key = "${var.aws_access_key_id}"
+  secret_key = "${var.aws_secret_access_key}"
+  region     = "${data.terraform_remote_state.network.vpc_region}"
 }
 
 module "public_instances" {
@@ -31,15 +31,15 @@ module "public_instances" {
 module "private_instances" {
   source = "./instances-private"
 
-  pri_sn_01         = "${data.terraform_remote_state.network.private_subnet_01}"
+  pri_sn_01        = "${data.terraform_remote_state.network.private_subnet_01}"
   pri_sn_01_az     = "${data.terraform_remote_state.network.private_subnet_01_az}"
-  pri_sn_01_id      = "${data.terraform_remote_state.network.private_subnet_01_id}"
-  pri_sn_01_access  = "${data.terraform_remote_state.network.private_subnet_01_access}"
+  pri_sn_01_id     = "${data.terraform_remote_state.network.private_subnet_01_id}"
+  pri_sn_01_access = "${data.terraform_remote_state.network.private_subnet_01_access}"
 
-  pri_sn_02         = "${data.terraform_remote_state.network.private_subnet_02}"
+  pri_sn_02        = "${data.terraform_remote_state.network.private_subnet_02}"
   pri_sn_02_az     = "${data.terraform_remote_state.network.private_subnet_02_az}"
-  pri_sn_02_id      = "${data.terraform_remote_state.network.private_subnet_02_id}"
-  pri_sn_02_access  = "${data.terraform_remote_state.network.private_subnet_02_access}"
+  pri_sn_02_id     = "${data.terraform_remote_state.network.private_subnet_02_id}"
+  pri_sn_02_access = "${data.terraform_remote_state.network.private_subnet_02_access}"
 
-  pri_sg_id     = "${data.terraform_remote_state.network.private_security_group_id}"
+  pri_sg_id = "${data.terraform_remote_state.network.private_security_group_id}"
 }

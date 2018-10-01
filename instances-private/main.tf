@@ -7,7 +7,7 @@ resource "aws_instance" "sn_01_instances" {
   subnet_id         = "${var.pri_sn_01_id}"
 
   associate_public_ip_address = false
-  source_dest_check = false
+  source_dest_check           = false
 
   # NOTE: due to an existing issue in terraform: https://github.com/hashicorp/terraform/issues/953,
   # modules cannot be provided with a "count" attribute. Hence this needs to be handled
@@ -15,7 +15,8 @@ resource "aws_instance" "sn_01_instances" {
   count = 1
 
   vpc_security_group_ids = [
-    "${var.pri_sg_id}"]
+    "${var.pri_sg_id}",
+  ]
 
   tags = {
     Name = "${var.pri_sn_01}_${count.index}"
@@ -31,12 +32,13 @@ resource "aws_instance" "sn_02_instances" {
   subnet_id         = "${var.pri_sn_02_id}"
 
   associate_public_ip_address = false
-  source_dest_check = false
+  source_dest_check           = false
 
   count = 1
 
   vpc_security_group_ids = [
-    "${var.pri_sg_id}"]
+    "${var.pri_sg_id}",
+  ]
 
   tags = {
     Name = "${var.pri_sn_02}_${count.index}"

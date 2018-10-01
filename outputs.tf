@@ -13,4 +13,3 @@ output "private_sn_01_instances" {
 output "private_sn_02_instances" {
   value = "${module.private_instances.private_sn_02_addresses}"
 }
-
