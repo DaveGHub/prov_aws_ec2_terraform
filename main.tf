@@ -18,6 +18,12 @@ provider "aws" {
   region     = "${data.terraform_remote_state.network.vpc_region}"
 }
 
+## Write the private key to access bastion host in a file
+resource "local_file" "bastion_access_key" {
+  content  = "${data.terraform_remote_state.network.bastion_access_key}"
+  filename = "${path.module}/id_rsa_bastion.pem"
+}
+
 module "public_instances" {
   source = "./instances-public"
 
