@@ -10,6 +10,9 @@ resource "aws_instance" "public_instances" {
   associate_public_ip_address = true
   source_dest_check = false
 
+  # NOTE: due to an existing issue in terraform: https://github.com/hashicorp/terraform/issues/953,
+  # modules cannot be provided with a "count" attribute. Hence this needs to be handled
+  # as part of module implementation or in the main.tf file
   count = 1
 
   security_groups = [
