@@ -14,7 +14,7 @@ resource "aws_instance" "sn_01_instances" {
   # as part of module implementation or in the main.tf file
   count = 1
 
-  security_groups = [
+  vpc_security_group_ids = [
     "${var.pri_sg_id}"]
 
   tags = {
@@ -35,7 +35,7 @@ resource "aws_instance" "sn_02_instances" {
 
   count = 1
 
-  security_groups = [
+  vpc_security_group_ids = [
     "${var.pri_sg_id}"]
 
   tags = {

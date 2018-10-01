@@ -15,7 +15,7 @@ resource "aws_instance" "public_instances" {
   # as part of module implementation or in the main.tf file
   count = 1
 
-  security_groups = [
+  vpc_security_group_ids = [
     "${var.pub_sg_id}"]
 
   tags = {
