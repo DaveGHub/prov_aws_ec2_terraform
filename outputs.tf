@@ -1,5 +1,5 @@
 output "public_instances_key" {
-  value = "${data.terraform_remote_state.network.public_subnet_access}"
+  value = "${data.terraform_remote_state.network.subnet_public_key_name}"
 }
 
 output "public_instances" {
