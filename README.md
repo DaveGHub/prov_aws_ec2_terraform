@@ -1,6 +1,6 @@
 # prov_aws_ec2_terraform
 
-Provision AWS EC2 instances with Terraform using modules
+Provision AWS EC2 instances with Terraform using modules 
 
 The example here provides [Terraform](https://www.terraform.io/) scripts to
 provision instances in public and private subnets. These instances can be
